@@ -1,0 +1,47 @@
+
+.socialMenu {
+    position: fixed;
+    height: 60px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 25px 0 black;
+
+    display: flex;
+    grid-gap: 24px;
+    justify-items: center;
+    margin: auto;
+    font-size: 1em;
+    background-color: rgba(255, 255, 255, 0.3);
+
+    text-decoration: none;
+    list-style-type: none;
+  }
+  
+.socialMenuText {
+    color: #304254;
+}
+
+.socialMenuLink {
+    color: #304254;
+    text-decoration: none;
+    list-style-type: none;
+}
+
+.socialMenuLink:hover {
+    box-shadow: inset 0 -1.2em 0 hsla(0, 0%, 100%, 0.4);
+}
+
+li:hover ~ li p {
+    animation: wave-animation 0.3s infinite;
+}
+
+.emailLogo {
+    height: 1.5rem;
+}
+
+.githubLogo {
+    height: 2rem;
+}

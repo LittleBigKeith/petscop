@@ -1,0 +1,39 @@
+.navbarMenu {
+    font-size: calc(1rem * var(--bfso, 1));
+    font-synthesis: none;
+    font-kerning: none;
+    font-variant-ligatures: none;
+    font-feature-settings: "kern" 0, "calt" 0, "liga" 0, "clig" 0, "dlig" 0, "hlig" 0;
+    font-family: unset;
+    -webkit-font-smoothing: subpixel-antialiased;
+    text-rendering: geometricprecision;
+    white-space: normal;
+    justify-content: flex-end;
+    padding: 0px;
+    visibility: visible;
+    display: flex;
+}
+
+.navMenuLink {
+    color: #304254;
+    display: flex;
+    align-items: center;
+    list-style-type: none;
+    white-space: nowrap;
+    display: list-item;
+    text-align: -webkit-match-parent;
+    unicode-bidi: isolate;
+}
+.navMenuLinkContent {
+    display: inline-block;
+    text-decoration-line: none;
+    font-family: YAFdJi-0PQg-0, -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 2em;
+    font-weight: 700;
+    white-space: nowrap;
+    padding: 10px 16px;
+    margin-right: auto;
+    color: #304254;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

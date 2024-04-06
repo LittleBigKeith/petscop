@@ -6,6 +6,8 @@ import Welcome from './components/Welcome'
 import PetBase from './components/PetBase'
 import Shop from './components/Shop'
 import PetView from './components/PetView'
+import Feed from './components/Feed'
+import Quest from './components/Quest'
 import Footer from './components/Footer'
 import Castle from "./assets/images/castle.png"
 
@@ -19,7 +21,10 @@ function App() {
         <Route index element={<Welcome />} />
         <Route path="pet-base" element={<PetBase />} />
         <Route path="shop" element={<Shop />} />
-        <Route path="pet-view" element={<PetView />} />
+        <Route path="pet-view" element={<PetView />}>
+          <Route path="feed" element={<Feed />} />
+          <Route path="quest" element={<Quest />} />
+        </Route>
       </Route>
     </Routes>
     </BrowserRouter>

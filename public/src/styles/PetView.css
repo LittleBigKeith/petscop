@@ -44,7 +44,7 @@
     font-family:sans-serif;
 }
 
-.pet-view .right .menu .container {
+.pet-view .right .menu {
     height: fit-content;
     margin: 20px auto;
     display:grid;

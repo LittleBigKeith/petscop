@@ -1,13 +1,9 @@
 import "../styles/PetView.css"
-import { BrowserRouter, Routes, Route } from "react-router-dom"
-import PetViewMenu from './PetViewMenu'
-import Feed from './Feed'
-import Quest from '.Quest'
+import {Outlet, Link} from "react-router-dom"
 
 const PetView = () => {
     return  (
         <>
-       
         <div className="pet-view">
             <h1>Pet View</h1>
             <div className="split">
@@ -22,8 +18,15 @@ const PetView = () => {
                     </div>
                 </div>
                 <div className="right">
-                    <PetViewMenu />
-                    <Feed />
+                    <div className="menu">
+                        <Link to="feed" className="box">
+                            Feed
+                        </Link>
+                        <Link to="quest" className="box">
+                            Quest
+                        </Link>
+                    </div>
+                    <Outlet />
                 </div>
             </div>
         </div>

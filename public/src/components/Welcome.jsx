@@ -7,9 +7,8 @@ const Welcome = () => {
         <> 
         <div className="welcomeContainer">
             <img src={WelcomeDragon} alt="Welcome image" className="welcomeImage" />
-            <h1 className="title">Welcome home!</h1>
+            <h1 className="title">Welcome home</h1>
             <h2 className="subtitle">ただいま</h2>
-
         </div>
         </>
     )

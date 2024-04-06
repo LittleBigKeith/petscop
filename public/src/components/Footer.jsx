@@ -1,30 +1,30 @@
 import "../styles/Footer.css"
-import email from "../assets/images/logo-email.png"
-import github from "../assets/images/logo-github.png"
+import Email from "../assets/images/logo-email.png"
+import Github from "../assets/images/logo-github.png"
 
 const Footer = () => {
 
     return (
-        <div>
-            <ul className="socialMenu">
-                <li className="socialMenuText">
+        <>
+            <ul className="footer">
+                <li className="text">
                     👋
                 </li>
-                <li className="socialMenuText">
+                <li className="text">
                     created by Keith Kong
                 </li>
                 <li>
-                    <a href="">
-                        <img src={email} className="emailLogo"/>
+                    <a href="mailto:keithkong1996@gmail.com">
+                        <img src={Email} className="email"/>
                     </a>
                 </li>
                 <li>
-                    <a href="">
-                        <img src={github} className="githubLogo"/>
+                    <a href="https://github.com/LittleBigKeith">
+                        <img src={Github} className="github"/>
                     </a>
                 </li>
             </ul>
-        </div>
+        </>
     )
 }
 

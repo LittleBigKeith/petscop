@@ -1,3 +1,10 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  color: #304254;
+}
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -5,10 +12,6 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-image: url(assets/images/background-home.png);
-  background-position: center; /* Center the image */
-  background-repeat: no-repeat; /* Do not repeat the image */
-  background-size: cover; /* Resize the background image to cover the entire container */
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -27,9 +30,7 @@ a:hover {
 
 body {
   margin: 0;
-  display: block;
   place-items: center;
-  min-width: 320px;
   min-height: 100vh;
 }
 

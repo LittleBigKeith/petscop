@@ -1,0 +1,67 @@
+.pet-view {
+    min-width: 500px;
+}
+/* Split the screen in half */
+.pet-view .split {
+    display: flex; 
+    flex-direction: row; 
+}
+
+/* Control the left side */
+.left {
+    width: 50%; 
+}
+
+/* Control the right side */
+.right {
+    width: 50%; 
+}
+
+.pet-view .left .container {
+    margin: 20px auto;
+    height:500px;
+    padding-right: 15px;
+    display:grid;
+    overflow: unset;
+    margin: auto;
+    justify-content: right;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    overflow:-moz-hidden-unscrollable;
+    grid-column-gap: 30px;
+    grid-row-gap: 30px;
+}
+
+.pet-view .left .box {
+    background-color:#333;
+    margin:20px;
+    min-width: 180px;
+    border-radius:10px;
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:40px;
+    font-family:sans-serif;
+}
+
+.pet-view .right .menu .container {
+    height: fit-content;
+    margin: 20px auto;
+    display:grid;
+    justify-content: center;
+    grid-template-columns: auto auto;
+    grid-column-gap: 30px;
+    grid-row-gap: 30px;
+
+}
+
+.pet-view .right .menu .box {
+    background-color:#FFF;
+    padding:10px;
+    border-radius:10px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:40px;
+    font-family:sans-serif;
+}

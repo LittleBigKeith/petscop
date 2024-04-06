@@ -1,7 +1,7 @@
 #root {
   max-width: 1280px;
-  margin: 0 auto;
   padding: 2rem;
+  margin: 0 auto;
   text-align: center;
 }
 
@@ -39,4 +39,14 @@
 
 .read-the-docs {
   color: #888;
+}
+
+.castle {
+    position: absolute;
+    z-index: -99;
+    height: 58vh;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-44%);
+    opacity: 0.6;
 }

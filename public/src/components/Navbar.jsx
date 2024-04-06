@@ -1,25 +1,30 @@
-import '../styles/Navbar.css'
+import "../styles/Navbar.css"
+import { Outlet, Link } from "react-router-dom";
 
 const Navbar = () => {
     return (
-        <div>
-        <nav>
-            <ul className="navbarMenu">
-                <li className="navMenuLink">
-                    <a class = "navMenuLinkContent">Homepage</a>
-                </li>
-                <li className="navMenuLink">
-                    <a class = "navMenuLinkContent">Pet Base</a>
-                </li>
-                <li className="navMenuLink">
-                    <a class = "navMenuLinkContent">Shop</a>
-                </li>
-                <li className="navMenuLink">
-                    <a class = "navMenuLinkContent">Quest</a>
-                </li>
-            </ul>
+        <>
+        <nav className="navbar">
+            <div className="stats">
+                Gold: 0     Exp: 0
+            </div>
+            <div className="navigation">
+                <ul className="menu">
+                    <li className="link">
+                        <Link to="/" className="text">Home</Link>
+                    </li>
+                    <li className="link">
+                        <Link to="/pet-base" className="text">Pet Base</Link>
+                    </li>
+                    <li className="link">
+                        <Link to="/shop" className="text">Shop</Link>
+                    </li>
+                </ul>
+            </div>
         </nav>
-        </div>
+
+        <Outlet />
+        </>
     )
 }
 

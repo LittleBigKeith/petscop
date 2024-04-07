@@ -1,8 +1,0 @@
-.pet-view .right .table {
-    display: flex;
-    justify-content: center;
-}
-
-.pet-view .right .table td {
-    max-width: 200px;
-}

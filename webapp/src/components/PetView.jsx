@@ -8,18 +8,16 @@ const PetView = () => {
             <h1>Pet View</h1>
             <div className="split">
                 <div className="left">
-                    <div className="container">
-                        <p className="box">
-                        Pet image
-                        </p>
-                        <p className="box">
-                        Pet details
-                        </p>
-                    </div>
+                    <p className="box">
+                    Pet image
+                    </p>
+                    <p className="box">
+                    Pet details
+                    </p>
                 </div>
                 <div className="right">
                     <div className="menu">
-                        <Link to="feed" className="box">
+                        <Link to="" className="box">
                             Feed
                         </Link>
                         <Link to="quest" className="box">

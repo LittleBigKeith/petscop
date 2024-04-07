@@ -6,6 +6,9 @@
 .navbar .stats {
     display: flex;
     align-items: center;
+    color:#17545d;
+    font-size: 1.5rem;
+    font-weight: bolder;
 }
 
 .navbar .navigation .menu {

@@ -14,10 +14,11 @@ import com.fdmgroup.petscop.model.OwnerFoodEmbeddedKey;
 
 @Service
 public class OwnerFoodService {
+	
 	private OwnerFoodRepository ownerFoodRepo;
 	private OwnerRepository ownerRepo;
 	private FoodRepository foodRepo;
-	
+
 	@Autowired
 	public OwnerFoodService(OwnerFoodRepository ownerFoodRepo, OwnerRepository ownerRepo, FoodRepository foodRepo) {
 		super();
@@ -31,7 +32,7 @@ public class OwnerFoodService {
 		return ownerFoodRepo.findByOwnerFoodEmbeddedKey(ownerFoodEmbeddedKey).get();
 	}
 	
-	public List<OwnerFood> findByOwner(int ownerId) {
+	public List<OwnerFood> findByOwnerId(int ownerId) {
 		return ownerFoodRepo.findByOwnerFoodEmbeddedKeyOwner(ownerRepo.findById(ownerId).get());
 	}
 	

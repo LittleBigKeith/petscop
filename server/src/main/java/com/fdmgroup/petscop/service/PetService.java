@@ -53,11 +53,11 @@ public class PetService {
 		return petRepo.findByGender(gender);
 	}
 	
-	public List<Pet> findAffordable(int inGameWealth) {
-		return petRepo.findByPriceLessThanEqualOrderByPriceAsc(inGameWealth);
+	public List<Pet> findAffordable(int Gold) {
+		return petRepo.findByPriceLessThanEqualOrderByPriceAsc(Gold);
 	}
 	
-	public List<Pet> findUnaffordable(int inGameWealth) {
-		return petRepo.findByPriceGreaterThanOrderByPriceAsc(inGameWealth);
+	public List<Pet> findUnaffordable(int Gold) {
+		return petRepo.findByPriceGreaterThanOrderByPriceAsc(Gold);
 	}
 }

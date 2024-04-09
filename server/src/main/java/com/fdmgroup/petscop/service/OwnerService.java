@@ -11,6 +11,7 @@ import com.fdmgroup.petscop.model.Owner;
 
 @Service
 public class OwnerService {
+	
 	private OwnerRepository ownerRepo;
 	
 	@Autowired
@@ -64,19 +65,19 @@ public class OwnerService {
 		return ownerRepo.findAllByOrderByCakeDateDesc();
 	}
 	
-	public List<Owner> sortByWealthLowToHigh() {
-		return ownerRepo.findAllByOrderByInGameWealthAsc();
+	public List<Owner> sortByGoldLowToHigh() {
+		return ownerRepo.findAllByOrderByGoldAsc();
 	}
 	
-	public List<Owner> sortByWealthHighToLow() {
-		return ownerRepo.findAllByOrderByInGameWealthDesc();
+	public List<Owner> sortByGoldHighToLow() {
+		return ownerRepo.findAllByOrderByGoldDesc();
 	}
 	
 	public List<Owner> sortByExperienceLowToHigh() {
-		return ownerRepo.findAllByOrderByInGameWealthAsc();
+		return ownerRepo.findAllByOrderByExperienceAsc();
 	}
 	
 	public List<Owner> sortByExperienceHighToLow() {
-		return ownerRepo.findAllByOrderByInGameWealthDesc();
+		return ownerRepo.findAllByOrderByExperienceDesc();
 	}
 }

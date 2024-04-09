@@ -1,0 +1,42 @@
+.shop {
+    min-width: 500px;
+}
+
+.shop .split {
+    display: flex; 
+    flex-direction: row; 
+    padding: 20px;
+}
+
+.shop .split .left {
+    width: 20%;
+    min-width: 220px;
+    padding: 20px;
+}
+
+.shop .split .left .menu {
+    height: fit-content;
+    margin: 20px auto;
+    display:grid;
+    justify-content: start;
+    grid-template-columns: auto;
+    grid-column-gap: 30px;
+    grid-row-gap: 30px;
+
+}
+
+.shop .split .left .menu .box {
+    background-color:#FFF;
+    padding:24px;
+    border-radius:10px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:30px;
+    font-family:sans-serif;
+}
+
+.shop .split .right {
+    width: 80%;
+    padding: 20px;
+}

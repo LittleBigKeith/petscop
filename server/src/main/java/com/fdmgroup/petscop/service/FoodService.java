@@ -20,8 +20,8 @@ public class FoodService {
 		this.foodRepo = foodRepo;
 	}
 	
-	public Food findById(int food) {
-		return foodRepo.findById(food).orElseThrow();
+	public Food findById(int id) {
+		return foodRepo.findById(id).orElseThrow();
 	}
 	
 	public List<Food> findAll() {
@@ -49,11 +49,13 @@ public class FoodService {
 		return foodRepo.findByNameLikeIgnoreCase(searchTerm);
 	}
 	
-	public List<Food> findAffordable(int inGameWealth) {
-		return foodRepo.findByPriceLessThanEqualOrderByPriceAsc(inGameWealth);
+	public List<Food> findAffordable(int gold) {
+		return foodRepo.findByPriceLessThanEqualOrderByPriceAsc(gold);
 	}
 	
-	public List<Food> findUnaffordable(int inGameWealth) {
-		return foodRepo.findByPriceGreaterThanOrderByPriceAsc(inGameWealth);
+	public List<Food> findUnaffordable(int gold) {
+		return foodRepo.findByPriceGreaterThanOrderByPriceAsc(gold);
 	}
 }
+
+

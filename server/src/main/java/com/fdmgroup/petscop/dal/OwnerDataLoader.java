@@ -59,7 +59,7 @@ public class OwnerDataLoader implements ApplicationRunner {
 		newOwner.setUsername("Gobber");
 		newOwner.setPassword("St01ckTh3V@st");
 		newOwner.setCakeDate(LocalDate.now().minusDays(730));
-		newOwner.setInGameWealth(16384);
+		newOwner.setGold(16384);
 		newOwner.setExperience(600);
 		ownerRepo.save(newOwner);
 		System.out.println(ownerRepo.findAll());
@@ -70,8 +70,8 @@ public class OwnerDataLoader implements ApplicationRunner {
 		System.out.println(ownerRepo.findAllByOrderByCakeDateAsc());
 		System.out.println(ownerRepo.findAllByOrderByCakeDateDesc());
 		
-		System.out.println(ownerRepo.findAllByOrderByInGameWealthAsc());
-		System.out.println(ownerRepo.findAllByOrderByInGameWealthDesc());
+		System.out.println(ownerRepo.findAllByOrderByGoldAsc());
+		System.out.println(ownerRepo.findAllByOrderByGoldDesc());
 		
 		System.out.println(ownerRepo.findAllByOrderByUsernameAsc());
 		System.out.println(ownerRepo.findAllByOrderByUsernameDesc());

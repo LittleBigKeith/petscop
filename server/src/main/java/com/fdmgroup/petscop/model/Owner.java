@@ -1,6 +1,7 @@
 package com.fdmgroup.petscop.model;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -24,16 +25,16 @@ public class Owner {
 	@Temporal(TemporalType.DATE)
 	@Column(name = "CAKE_DATE", nullable = false)
 	private LocalDate cakeDate;
-	@Column(name = "IN_GAME_WEALTH", nullable = false)
-	private int inGameWealth;
+	@Column(name = "GOLD", nullable = false)
+	private int gold;
 	@Column(name = "EXPERIENCE", nullable = false)
 	private int experience;
 
-	public Owner(String username, String password, LocalDate cakeDate, int inGameWealth, int experience) {
+	public Owner(String username, String password, LocalDate cakeDate, int gold, int experience) {
 		this.username = username;
 		this.password = password;
 		this.cakeDate = cakeDate;
-		this.inGameWealth = inGameWealth;
+		this.gold = gold;
 		this.experience = experience;
 	}
 	
@@ -73,12 +74,12 @@ public class Owner {
 		this.cakeDate = cakeDate;
 	}
 
-	public int getInGameWealth() {
-		return inGameWealth;
+	public int getGold() {
+		return gold;
 	}
 
-	public void setInGameWealth(int inGameWealth) {
-		this.inGameWealth = inGameWealth;
+	public void setGold(int gold) {
+		this.gold = gold;
 	}
 
 	public int getExperience() {
@@ -88,11 +89,30 @@ public class Owner {
 	public void setExperience(int experience) {
 		this.experience = experience;
 	}
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(cakeDate, experience, id, gold, password, username);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Owner other = (Owner) obj;
+		return Objects.equals(cakeDate, other.cakeDate) && experience == other.experience && id == other.id
+				&& gold == other.gold && Objects.equals(password, other.password)
+				&& Objects.equals(username, other.username);
+	}
 
 	@Override
 	public String toString() {
 		return "Owner [id=" + id + ", username=" + username + ", password=" + password + ", cakeDate=" + cakeDate
-				+ ", inGameWealth=" + inGameWealth + ", experience=" + experience + "]";
+				+ ", gold=" + gold + ", experience=" + experience + "]";
 	}
 	
 	

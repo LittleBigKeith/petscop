@@ -33,7 +33,7 @@ public class OwnerFoodController {
 	
 	@GetMapping("find/owner/{ownerId}")
 	public List<OwnerFood> findByOwner(@PathVariable int ownerId) {
-		return ownerFoodService.findByOwner(ownerId);
+		return ownerFoodService.findByOwnerId(ownerId);
 	}
 	
 	@GetMapping

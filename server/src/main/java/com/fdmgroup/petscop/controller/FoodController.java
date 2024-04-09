@@ -61,13 +61,13 @@ public class FoodController {
 		return foodService.searchByName(searchString);
 	}
 	
-	@GetMapping("find/affordable/{inGameWealth}")
-	public List<Food> findAffordable(@PathVariable int inGameWealth) {
-		return foodService.findAffordable(inGameWealth);
+	@GetMapping("find/affordable/{Gold}")
+	public List<Food> findAffordable(@PathVariable int Gold) {
+		return foodService.findAffordable(Gold);
 	}
 	
-	@GetMapping("find/unaffordable/{inGameWealth}")
-	public List<Food> findUnaffordable(@PathVariable int inGameWealth) {
-		return foodService.findUnaffordable(inGameWealth);
+	@GetMapping("find/unaffordable/{Gold}")
+	public List<Food> findUnaffordable(@PathVariable int Gold) {
+		return foodService.findUnaffordable(Gold);
 	}
 }

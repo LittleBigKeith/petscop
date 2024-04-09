@@ -17,16 +17,17 @@ public class OwnerPetService {
 	private OwnerRepository ownerRepo;
 
 	@Autowired
-	public OwnerPetService(OwnerPetRepository ownerPetRepo) {
+	public OwnerPetService(OwnerPetRepository ownerPetRepo, OwnerRepository ownerRepo) {
 		super();
 		this.ownerPetRepo = ownerPetRepo;
+		this.ownerRepo = ownerRepo;
 	}
 
 	public OwnerPet findById(int id) {
 		return ownerPetRepo.findById(id).get();
 	}
 	
-	public List<OwnerPet> findByOwner(int ownerId) {
+	public List<OwnerPet> findByOwnerId(int ownerId) {
 		return ownerPetRepo.findByOwner(ownerRepo.findById(ownerId).get());
 	}
 	
@@ -44,10 +45,6 @@ public class OwnerPetService {
 	
 	public void deleteById(int id) {
 		ownerPetRepo.deleteById(id);
-	}
-	
-	public OwnerPet findByGivenName(String givenName) {
-		return ownerPetRepo.findByGivenName(givenName);
 	}
 	
 	public List<OwnerPet> searchByGivenName(String searchString) {

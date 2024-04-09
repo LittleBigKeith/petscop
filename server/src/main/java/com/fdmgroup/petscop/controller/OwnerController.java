@@ -81,24 +81,24 @@ public class OwnerController {
 		return ownerService.sortByCakeDateNewToOld();
 	}
 	
-	@GetMapping("sort/wealth/asc")
-	public List<Owner> sortByWealthLowToHigh() {
-		return ownerService.sortByWealthLowToHigh();
+	@GetMapping("sort/gold/asc")
+	public List<Owner> sortByGoldLowToHigh() {
+		return ownerService.sortByGoldLowToHigh();
 	}
 	
-	@GetMapping("sort/wealth/desc")
-	public List<Owner> sortByWealthHighToLow() {
-		return ownerService.sortByWealthHighToLow();
+	@GetMapping("sort/gold/desc")
+	public List<Owner> sortByGoldHighToLow() {
+		return ownerService.sortByGoldHighToLow();
 	}
 	
 	@GetMapping("sort/exp/asc")
 	public List<Owner> sortByExperienceLowToHigh() {
-		return ownerService.sortByWealthLowToHigh();
+		return ownerService.sortByExperienceLowToHigh();
 	}
 	
 	@GetMapping("sort/exp/desc")
 	public List<Owner> sortByExperienceHighToLow() {
-		return ownerService.sortByWealthHighToLow();
+		return ownerService.sortByExperienceHighToLow();
 	}
 }
 

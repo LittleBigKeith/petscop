@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.fdmgroup.petscop.model.OwnerFood;
 import com.fdmgroup.petscop.model.OwnerPet;
 import com.fdmgroup.petscop.service.OwnerPetService;
 
@@ -34,7 +33,7 @@ public class OwnerPetController {
 	
 	@GetMapping("find/owner/{ownerId}")
 	public List<OwnerPet> findByOwner(@PathVariable int ownerId) {
-		return ownerPetService.findByOwner(ownerId);
+		return ownerPetService.findByOwnerId(ownerId);
 	}
 	
 	@GetMapping
@@ -55,11 +54,6 @@ public class OwnerPetController {
 	@PutMapping("delete/{id}")
 	public void delete(@PathVariable int id) {
 		ownerPetService.deleteById(id);
-	}
-	
-	@GetMapping("find/name/{name}")
-	public OwnerPet findByName(@PathVariable String name) {
-		return ownerPetService.findByGivenName(name);
 	}
 	
 	@GetMapping("search/{searchString}")

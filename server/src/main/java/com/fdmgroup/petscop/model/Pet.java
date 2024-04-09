@@ -1,5 +1,7 @@
 package com.fdmgroup.petscop.model;
 
+import java.util.Objects;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -71,6 +73,24 @@ public class Pet {
 
 	public void setHunger_point(int maxHungerPoint) {
 		this.maxHungerPoint = maxHungerPoint;
+	}
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(defaultName, gender, id, maxHungerPoint, price);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Pet other = (Pet) obj;
+		return Objects.equals(defaultName, other.defaultName) && gender == other.gender && id == other.id
+				&& maxHungerPoint == other.maxHungerPoint && price == other.price;
 	}
 
 	@Override

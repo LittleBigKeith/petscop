@@ -1,0 +1,54 @@
+.navbar {
+    display: grid;
+    grid-template-columns: max-content auto;
+}
+
+.navbar .stats {
+    display: flex;
+    align-items: center;
+    color:#17545d;
+    font-size: 1.5rem;
+    font-weight: bolder;
+}
+
+.navbar .navigation .menu {
+    font-size: calc(1rem * var(--bfso, 1));
+    font-synthesis: none;
+    font-kerning: none;
+    font-variant-ligatures: none;
+    font-feature-settings: "kern" 0, "calt" 0, "liga" 0, "clig" 0, "dlig" 0, "hlig" 0;
+    font-family: unset;
+    -webkit-font-smoothing: subpixel-antialiased;
+    text-rendering: geometricprecision;
+    white-space: normal;
+    justify-content: flex-end;
+    padding: 0px;
+    display: flex;
+}
+
+.navbar .navigation .link {
+    display: flex;
+    align-items: center;
+    list-style-type: none;
+    white-space: nowrap;
+    display: list-item;
+    text-align: -webkit-match-parent;
+    unicode-bidi: isolate;
+}
+
+.navbar .navigation .text {
+    display: inline-block;
+    text-decoration-line: none;
+    font-family: YAFdJi-0PQg-0, -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 2em;
+    font-weight: 700;
+    white-space: nowrap;
+    padding: 10px 16px;
+    margin-right: auto;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.navbar .navigation .text:hover {
+    color: #535bf2;
+}

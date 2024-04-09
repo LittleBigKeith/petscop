@@ -1,0 +1,30 @@
+.pet-base {
+    min-width: 500px;
+}
+.pet-base .container{
+    min-width: 420px;
+    margin: 20px auto;
+    height:500px;
+    display:grid;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    margin: auto;
+    grid-column-gap: 30px;
+    grid-row-gap: 30px;
+    }
+
+.pet-base .box{
+    background-color:#333;
+
+    min-width: 180px;
+    margin:20px;
+    border-radius:10px;
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:40px;
+    font-family:sans-serif;
+}
+  
+  

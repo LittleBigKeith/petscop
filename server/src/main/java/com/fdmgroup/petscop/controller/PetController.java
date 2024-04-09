@@ -66,13 +66,13 @@ public class PetController {
 		return petService.findByGender(gender);
 	}
 	
-	@GetMapping("find/affordable/{inGameWealth}")
-	public List<Pet> findAffordable(@PathVariable int inGameWealth) {
-		return petService.findAffordable(inGameWealth);
+	@GetMapping("find/affordable/{gold}")
+	public List<Pet> findAffordable(@PathVariable int gold) {
+		return petService.findAffordable(gold);
 	}
 	
-	@GetMapping("find/unaffordable/{inGameWealth}")
-	public List<Pet> findUnaffordable(@PathVariable int inGameWealth) {
-		return petService.findUnaffordable(inGameWealth);
+	@GetMapping("find/unaffordable/{gold}")
+	public List<Pet> findUnaffordable(@PathVariable int gold) {
+		return petService.findUnaffordable(gold);
 	}
 }

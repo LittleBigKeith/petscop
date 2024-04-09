@@ -1,6 +1,7 @@
 package com.fdmgroup.petscop.model;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -96,6 +97,25 @@ public class OwnerPet {
 		this.hungerPoint = hungerPoint;
 	}
 	
+	@Override
+	public int hashCode() {
+		return Objects.hash(birthDate, givenName, hungerPoint, id, owner, pet);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		OwnerPet other = (OwnerPet) obj;
+		return Objects.equals(birthDate, other.birthDate) && Objects.equals(givenName, other.givenName)
+				&& hungerPoint == other.hungerPoint && id == other.id && Objects.equals(owner, other.owner)
+				&& Objects.equals(pet, other.pet);
+	}
+
 	@Override
 	public String toString() {
 		return "OwnerPet [id=" + id + ", owner=" + owner + ", pet=" + pet + ", givenName=" + givenName + ", birthDate="

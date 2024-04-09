@@ -1,4 +1,6 @@
 package com.fdmgroup.petscop.model;
+import java.util.Objects;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
@@ -38,6 +40,23 @@ public class OwnerFood {
 
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
+	}
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(ownerFoodEmbeddedKey, quantity);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		OwnerFood other = (OwnerFood) obj;
+		return Objects.equals(ownerFoodEmbeddedKey, other.ownerFoodEmbeddedKey) && quantity == other.quantity;
 	}
 
 	@Override

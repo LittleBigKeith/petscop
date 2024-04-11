@@ -1,6 +1,7 @@
 import './App.css'
 import './index.css'
 import { BrowserRouter, Routes, Route } from "react-router-dom"
+import { useState } from 'react'
 import Navbar from './components/Navbar'
 import Welcome from './components/Welcome'
 import PetBase from './components/PetBase'
@@ -14,25 +15,41 @@ import Feed from './components/Feed'
 import Quest from './components/Quest'
 import Footer from './components/Footer'
 import Castle from "./assets/images/castle.png"
+import Login from './components/Login'
+import Register from './components/Register'
+
 
 function App() {
+
+  const [bearer, setBearer] = useState("")
+  const [username, setUsername] = useState("")
+  const [gold, setGold] = useState(0)
+  const [experience, setExperience] = useState(0)
 
   return (
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Navbar />}>
-            <Route index element={<Welcome />} />
-            <Route path="pet-base" element={<PetBase />} />
-            <Route path="shop" element={<Shop />}>
-              <Route path="" element={<BuyPet />} />
-              <Route path="sell-pet" element={<SellPet />} />
-              <Route path="buy-food" element={<BuyFood />} />
-              <Route path="sell-food" element={<SellFood />} />
-        </Route>
-            <Route path="pet-view" element={<PetView />}>
-              <Route path="" element={<Feed />} />
-              <Route path="quest" element={<Quest />} />
+          <Route path="/" element={bearer.length > 0? <Navbar bearer={[bearer,setBearer]} username={[username,setUsername]} gold={[gold, setGold]} experience={[experience, setExperience]} />: null}>
+            <Route path="" element={<Welcome />}>
+              <Route path = "" element={<Login bearer={[bearer,setBearer]} username={[username,setUsername]} />} />
+              <Route path = "register" element={<Register bearer={[bearer,setBearer]} username={[username,setUsername]} />} />
+            </Route>
+            <Route path="pet-base/:username" element={bearer.length > 0? <PetBase bearer={[bearer,setBearer]} username={[username,setUsername]} />:<Welcome /> }>
+              <Route path="" element={bearer.length > 0? null:<Login bearer={[bearer,setBearer]} username={[username,setUsername]} />} />
+            </Route>
+            <Route path="shop" element={bearer.length > 0? <Shop />:<Welcome />}>
+              <Route path="" element={bearer.length > 0? <BuyPet bearer={[bearer,setBearer]} username={[username,setUsername]} gold={[gold, setGold]} />:<Login bearer={[bearer,setBearer]} username={[username,setUsername]} />} />
+              <Route path="sell-pet" element={bearer.length > 0? <SellPet bearer={[bearer,setBearer]} username={[username,setUsername]} />:<Login bearer={[bearer,setBearer]} username={[username,setUsername]} />} />
+              <Route path="buy-food" element={bearer.length > 0? <BuyFood bearer={[bearer,setBearer]} username={[username,setUsername]} gold={[gold, setGold]} />:<Login bearer={[bearer,setBearer]} username={[username,setUsername]} />} />
+              <Route path="sell-food" element={bearer.length > 0? <SellFood bearer={[bearer,setBearer]} username={[username,setUsername]} />:<Login bearer={[bearer,setBearer]} username={[username,setUsername]} />} />
+            </Route>
+            <Route path="pet-view/:id" element={bearer.length > 0? <PetView bearer={[bearer,setBearer]} username={[username,setUsername]} />: <Welcome /> }>
+              <Route path="" element={bearer.length > 0? <Feed bearer={[bearer,setBearer]} username={[username,setUsername]} />: <Login bearer={[bearer,setBearer]} username={[username,setUsername]}  />} />
+              <Route path="quest" element={bearer.length > 0? <Feed bearer={[bearer,setBearer]} username={[username,setUsername]} />: <Login bearer={[bearer,setBearer]} username={[username,setUsername]} />} />
+            </Route>
+            <Route path="*" element={bearer.length > 0? <PetBase bearer={[bearer,setBearer]} username={[username,setUsername]} />:<Welcome /> }>
+              <Route path="*" element={bearer.length > 0? null:<Login bearer={[bearer,setBearer]} username={[username,setUsername]} />} />
             </Route>
           </Route>
         </Routes>

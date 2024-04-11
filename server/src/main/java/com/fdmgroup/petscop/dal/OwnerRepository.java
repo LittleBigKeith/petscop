@@ -11,6 +11,8 @@ import com.fdmgroup.petscop.model.Owner;
 @Repository
  public interface OwnerRepository extends JpaRepository<Owner, Integer>{
 	 Optional<Owner> findByUsername(String username);
+	 Optional<Owner> findByUsernameAndPassword(String username, String password);
+	 List<Owner> findByRole(Owner.Role role);
 	 List<Owner> findByUsernameLikeIgnoreCase(String searchTerm);
 	 List<Owner> findAllByOrderByUsernameAsc();
 	 List<Owner> findAllByOrderByUsernameDesc();

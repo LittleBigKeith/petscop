@@ -32,19 +32,15 @@ public class OwnerFoodService {
 		return ownerFoodRepo.findByOwnerFoodEmbeddedKey(ownerFoodEmbeddedKey).get();
 	}
 	
-	public List<OwnerFood> findByOwnerId(int ownerId) {
-		return ownerFoodRepo.findByOwnerFoodEmbeddedKeyOwner(ownerRepo.findById(ownerId).get());
+	public List<OwnerFood> findByOwner(String username) {
+		return ownerFoodRepo.findByOwnerFoodEmbeddedKeyOwner(ownerRepo.findByUsername(username).get());
 	}
 	
 	public List<OwnerFood> findAll() {
 		return ownerFoodRepo.findAll();
 	}
 	
-	public void create(OwnerFood ownerFood) {
-		ownerFoodRepo.save(ownerFood);
-	}
-	
-	public void update(@RequestBody OwnerFood ownerFood) {
+	public void createOrUpdate(OwnerFood ownerFood) {
 		ownerFoodRepo.save(ownerFood);
 	}
 	

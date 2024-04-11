@@ -3,6 +3,7 @@ package com.fdmgroup.petscop.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,6 +17,7 @@ import com.fdmgroup.petscop.service.PetService;
 
 @RestController
 @RequestMapping("pet")
+@CrossOrigin("http://localhost:5173")
 public class PetController {
 	
 	private PetService petService;
@@ -36,14 +38,9 @@ public class PetController {
 		return petService.findAll();
 	}
 	
-	@PostMapping("create")
-	public void create(@RequestBody Pet pet) {
-		petService.create(pet);
-	}
-	
 	@PostMapping("update")
-	public void update(@RequestBody Pet pet) {
-		petService.update(pet);
+	public void create(@RequestBody Pet pet) {
+		petService.createOrUpdate(pet);
 	}
 	
 	@PutMapping("delete/{id}")
@@ -59,11 +56,6 @@ public class PetController {
 	@GetMapping("search/{searchString}")
 	public List<Pet> searchByName(@PathVariable String searchString) {
 		return petService.searchByDefaultName(searchString);
-	}
-	
-	@GetMapping("find/gender/{gender}")
-	public List<Pet> findByGender(@PathVariable Pet.Gender gender) {
-		return petService.findByGender(gender);
 	}
 	
 	@GetMapping("find/affordable/{gold}")

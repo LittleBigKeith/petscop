@@ -30,7 +30,7 @@ function App() {
               <Route path="buy-food" element={<BuyFood />} />
               <Route path="sell-food" element={<SellFood />} />
         </Route>
-            <Route path="pet-view" element={<PetView />}>
+            <Route path="pet-view/:id" element={<PetView />}>
               <Route path="" element={<Feed />} />
               <Route path="quest" element={<Quest />} />
             </Route>

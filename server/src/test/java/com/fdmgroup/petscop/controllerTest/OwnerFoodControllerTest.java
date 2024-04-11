@@ -57,9 +57,9 @@ public class OwnerFoodControllerTest {
     	for (int i = 0; i < numberOfOwnerFoods; i++) {
     		ownerFoodList.add(ownerFoodMock);
     	}
-    	when(ownerFoodServiceMock.findByOwnerId(owner.getId())).thenReturn(ownerFoodList);
-    	List<OwnerFood> retrievedOwnerFoodList = ownerFoodController.findByOwner(owner.getId());
-    	verify(ownerFoodServiceMock, times(1)).findByOwnerId(owner.getId());
+    	when(ownerFoodServiceMock.findByOwner(owner.getUsername())).thenReturn(ownerFoodList);
+    	List<OwnerFood> retrievedOwnerFoodList = ownerFoodController.findByOwner(owner.getUsername());
+    	verify(ownerFoodServiceMock, times(1)).findByOwner(owner.getUsername());
     	assertEquals(retrievedOwnerFoodList, ownerFoodList);
     }
     
@@ -78,15 +78,9 @@ public class OwnerFoodControllerTest {
     
     
     @Test
-    void TestIf_ownerFoodControllerCanCreate() {
+    void TestIf_ownerFoodControllerCanCreateOrUpdate() {
     	ownerFoodController.create(ownerFoodMock);
-    	verify(ownerFoodServiceMock, times(1)).create(ownerFoodMock);
-    }
-    
-    @Test
-    void TestIf_ownerFoodControllerCanUpdate() {
-    	ownerFoodController.update(ownerFoodMock);
-    	verify(ownerFoodServiceMock, times(1)).update(ownerFoodMock);
+    	verify(ownerFoodServiceMock, times(1)).createOrUpdate(ownerFoodMock);
     }
     
     @Test

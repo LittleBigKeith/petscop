@@ -3,6 +3,7 @@ package com.fdmgroup.petscop.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,6 +17,7 @@ import com.fdmgroup.petscop.service.FoodService;
 
 @RestController
 @RequestMapping("food")
+@CrossOrigin("http://localhost:5173")
 public class FoodController {
 	
 	private FoodService foodService;
@@ -36,14 +38,9 @@ public class FoodController {
 		return foodService.findAll();
 	}
 	
-	@PostMapping("create")
-	public void create(@RequestBody Food food) {
-		foodService.create(food);
-	}
-	
 	@PostMapping("update")
-	public void update(@RequestBody Food food) {
-		foodService.update(food);
+	public void create(@RequestBody Food food) {
+		foodService.createOrUpdate(food);
 	}
 	
 	@PutMapping("delete/{id}")

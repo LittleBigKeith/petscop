@@ -3,6 +3,7 @@ package com.fdmgroup.petscop.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,6 +17,7 @@ import com.fdmgroup.petscop.service.OwnerPetService;
 
 @RestController
 @RequestMapping("ownerpet")
+@CrossOrigin("http://localhost:5173")
 public class OwnerPetController {
 	
 	private OwnerPetService ownerPetService;
@@ -31,9 +33,9 @@ public class OwnerPetController {
 		return ownerPetService.findById(id);
 	}
 	
-	@GetMapping("find/owner/{ownerId}")
-	public List<OwnerPet> findByOwner(@PathVariable int ownerId) {
-		return ownerPetService.findByOwnerId(ownerId);
+	@GetMapping("find/owner/{username}")
+	public List<OwnerPet> findByOwner(@PathVariable String username) {
+		return ownerPetService.findByOwnerUsername(username);
 	}
 	
 	@GetMapping
@@ -41,14 +43,9 @@ public class OwnerPetController {
 		return ownerPetService.findAll();
 	}
 	
-	@PostMapping("create")
-	public void create(@RequestBody OwnerPet ownerPet) {
-		ownerPetService.create(ownerPet);
-	}
-	
 	@PostMapping("update")
-	public void update(@RequestBody OwnerPet ownerPet) {
-		ownerPetService.update(ownerPet);
+	public void createOrUpdate(@RequestBody OwnerPet ownerPet) {
+		ownerPetService.createOrUpdate(ownerPet);
 	}
 	
 	@PutMapping("delete/{id}")

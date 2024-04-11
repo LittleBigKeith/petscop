@@ -75,7 +75,7 @@ public class OwnerFoodServiceTest {
     	}
     	when(ownerFoodRepoMock.findByOwnerFoodEmbeddedKeyOwner(owner)).thenReturn(ownerFoodList);
     	doReturn(Optional.of(owner)).when(ownerRepoMock).findById(owner.getId());
-    	List<OwnerFood> retrievedOwnerFoodList = ownerFoodService.findByOwnerId(owner.getId());
+    	List<OwnerFood> retrievedOwnerFoodList = ownerFoodService.findByOwner(owner.getUsername());
     	verify(ownerFoodRepoMock, times(1)).findByOwnerFoodEmbeddedKeyOwner(owner);
     	assertEquals(retrievedOwnerFoodList, ownerFoodList);
     }
@@ -96,16 +96,10 @@ public class OwnerFoodServiceTest {
     
     @Test
     void TestIf_ownerFoodServiceCanCreate() {
-    	ownerFoodService.create(ownerFoodMock);
+    	ownerFoodService.createOrUpdate(ownerFoodMock);
     	verify(ownerFoodRepoMock, times(1)).save(ownerFoodMock);
     }
-    
-    @Test
-    void TestIf_ownerFoodServiceCanUpdate() {
-    	ownerFoodService.update(ownerFoodMock);
-    	verify(ownerFoodRepoMock, times(1)).save(ownerFoodMock);
-    }
-    
+
     @Test
     void TestIf_ownerFoodServiceCanDeleteByKey() {
     	Owner owner = new Owner();

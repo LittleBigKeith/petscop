@@ -5,7 +5,7 @@ const Welcome = () => {
 
     return (
         <> 
-        <div className="welcomeContainer">
+        <div className="welcome">
             <img src={WelcomeDragon} alt="Welcome image" className="welcomeImage" />
             <h1 className="title">Welcome Home</h1>
             <h2 className="subtitle">ただいま</h2>

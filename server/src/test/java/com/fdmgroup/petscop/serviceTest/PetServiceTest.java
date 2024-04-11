@@ -62,16 +62,10 @@ public class PetServiceTest {
     
     @Test
     void TestIf_PetServiceCanCreate() {
-    	petService.create(petMock);
+    	petService.createOrUpdate(petMock);
     	verify(petRepoMock, times(1)).save(petMock);
     }
-    
-    @Test
-    void TestIf_PetServiceCanUpdate() {
-    	petService.update(petMock);
-    	verify(petRepoMock, times(1)).save(petMock);
-    }
-    
+
     @Test
     void TestIf_PetServiceCanDeleteById() {
     	int id = 42;
@@ -99,20 +93,6 @@ public class PetServiceTest {
     	when(petRepoMock.findByDefaultNameLikeIgnoreCase("%" + searchTerm + "%")).thenReturn(petList);
     	List<Pet> retrievedPets = petService.searchByDefaultName(searchTerm);
     	verify(petRepoMock, times(1)).findByDefaultNameLikeIgnoreCase("%" + searchTerm + "%");
-    	assertEquals(retrievedPets, petList);
-    }
-    
-    @Test
-    void TestIf_PetServiceCanFindByGender() {
-    	int numberOfPets = 42;
-    	Pet.Gender gender = Pet.Gender.F;
-    	List<Pet> petList = new ArrayList<>();
-    	for (int i = 0; i < numberOfPets; i++) {
-    		petList.add(petMock);
-    	}
-    	when(petRepoMock.findByGender(gender)).thenReturn(petList);
-    	List<Pet> retrievedPets = petService.findByGender(gender);
-    	verify(petRepoMock, times(1)).findByGender(gender);
     	assertEquals(retrievedPets, petList);
     }
     

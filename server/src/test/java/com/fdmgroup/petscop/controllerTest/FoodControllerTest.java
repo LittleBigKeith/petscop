@@ -59,17 +59,11 @@ public class FoodControllerTest {
     }
     
     @Test
-    void TestIf_FoodControllerCanCreate() {
+    void TestIf_FoodControllerCanCreateOrUpdate() {
     	foodController.create(foodMock);
-    	verify(foodServiceMock, times(1)).create(foodMock);
+    	verify(foodServiceMock, times(1)).createOrUpdate(foodMock);
     }
-    
-    @Test
-    void TestIf_FoodControllerCanUpdate() {
-    	foodController.update(foodMock);
-    	verify(foodServiceMock, times(1)).update(foodMock);
-    }
-    
+   
     @Test
     void TestIf_FoodControllerCanDeleteById() {
     	int id = 42;

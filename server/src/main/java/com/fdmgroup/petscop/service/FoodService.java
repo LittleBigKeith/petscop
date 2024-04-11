@@ -28,11 +28,7 @@ public class FoodService {
 		return foodRepo.findAll();
 	}
 	
-	public void create(Food food) {
-		foodRepo.save(food);
-	}
-	
-	public void update(@RequestBody Food food) {
+	public void createOrUpdate(Food food) {
 		foodRepo.save(food);
 	}
 	

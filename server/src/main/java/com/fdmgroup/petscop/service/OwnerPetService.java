@@ -27,19 +27,15 @@ public class OwnerPetService {
 		return ownerPetRepo.findById(id).get();
 	}
 	
-	public List<OwnerPet> findByOwnerId(int ownerId) {
-		return ownerPetRepo.findByOwner(ownerRepo.findById(ownerId).get());
+	public List<OwnerPet> findByOwnerUsername(String username) {
+		return ownerPetRepo.findByOwner(ownerRepo.findByUsername(username).get());
 	}
 	
 	public List<OwnerPet> findAll() {
 		return ownerPetRepo.findAll();
 	}
 	
-	public void create(OwnerPet ownerPet) {
-		ownerPetRepo.save(ownerPet);
-	}
-	
-	public void update(@RequestBody OwnerPet ownerPet) {
+	public void createOrUpdate(OwnerPet ownerPet) {
 		ownerPetRepo.save(ownerPet);
 	}
 	

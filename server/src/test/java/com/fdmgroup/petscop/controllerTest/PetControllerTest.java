@@ -60,15 +60,9 @@ public class PetControllerTest {
     }
     
     @Test
-    void TestIf_PetControllerCanCreate() {
+    void TestIf_PetControllerCanCreateOrUpdate() {
     	petController.create(petMock);
-    	verify(petServiceMock, times(1)).create(petMock);
-    }
-    
-    @Test
-    void TestIf_PetControllerCanUpdate() {
-    	petController.update(petMock);
-    	verify(petServiceMock, times(1)).update(petMock);
+    	verify(petServiceMock, times(1)).createOrUpdate(petMock);
     }
     
     @Test
@@ -98,20 +92,6 @@ public class PetControllerTest {
     	when(petServiceMock.searchByDefaultName(searchTerm)).thenReturn(petList);
     	List<Pet> retrievedPets = petController.searchByName(searchTerm);
     	verify(petServiceMock, times(1)).searchByDefaultName(searchTerm);
-    	assertEquals(retrievedPets, petList);
-    }
-    
-    @Test
-    void TestIf_PetControllerCanFindByGender() {
-    	int numberOfPets = 42;
-    	Pet.Gender gender = Pet.Gender.F;
-    	List<Pet> petList = new ArrayList<>();
-    	for (int i = 0; i < numberOfPets; i++) {
-    		petList.add(petMock);
-    	}
-    	when(petServiceMock.findByGender(gender)).thenReturn(petList);
-    	List<Pet> retrievedPets = petController.findByGender(gender);
-    	verify(petServiceMock, times(1)).findByGender(gender);
     	assertEquals(retrievedPets, petList);
     }
     

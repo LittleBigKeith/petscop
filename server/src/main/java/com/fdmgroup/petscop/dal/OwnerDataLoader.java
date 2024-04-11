@@ -29,24 +29,24 @@ public class OwnerDataLoader implements ApplicationRunner {
 		
 		ArrayList<Owner> owners = new ArrayList<>();
 		
-		Owner tuffnet = new Owner("Tuffnet", "To0thless!&StormflY", LocalDate.now().minusDays(365), 8192, 300);
+		Owner tuffnet = new Owner("Tuffnet", "To0thless!&StormflY", Owner.Role.Admin, LocalDate.now().minusDays(365), 8192, 300);
 		owners.add(tuffnet);
-		Owner ruffnet = new Owner("Ruffnet", "Snotlout123!Fire!", LocalDate.now().minusDays(300), 4096, 400);
+		Owner ruffnet = new Owner("Ruffnet", "Snotlout123!Fire!", Owner.Role.User, LocalDate.now().minusDays(300), 4096, 400);
 		owners.add(ruffnet);
-		Owner stoick = new Owner("Stoick", "ToothlessFan23!", LocalDate.now().minusDays(200), 6500, 56);
+		Owner stoick = new Owner("Stoick", "ToothlessFan23!", Owner.Role.User, LocalDate.now().minusDays(200), 6500, 56);
 		owners.add(stoick);
-		Owner fishlegs = new Owner("Fishlegs", "FishlegsDragon123>.<", LocalDate.now().minusDays(100), 5048, 100);
+		Owner fishlegs = new Owner("Fishlegs", "FishlegsDragon123>.<", Owner.Role.User, LocalDate.now().minusDays(100), 5048, 100);
 		owners.add(fishlegs);
-		Owner astrid = new Owner("Astrid", "DragonRider!Astrid", LocalDate.now().minusDays(50), 800, 240);
+		Owner astrid = new Owner("Astrid", "DragonRider!Astrid", Owner.Role.User, LocalDate.now().minusDays(50), 800, 240);
 		owners.add(astrid);
-		Owner hiccup = new Owner("Hiccup", "ILoveDragons123$%^", LocalDate.now().minusDays(1), 1600, 10);
+		Owner hiccup = new Owner("Hiccup", "ILoveDragons123$%^", Owner.Role.User, LocalDate.now().minusDays(1), 1600, 10);
 		owners.add(hiccup);
 		
 		ownerRepo.saveAll(owners);
 		
 		System.out.println();
 		System.out.println("<-- Owner Dataloader -->");
-		Owner spitelout = new Owner("Spitelout", "S!p1t3l0ut!", LocalDate.now(), 100, 0);
+		Owner spitelout = new Owner("Spitelout", "S!p1t3l0ut!", Owner.Role.Admin, LocalDate.now(), 100, 0);
 		owners.add(spitelout);
 		ownerRepo.save(spitelout);
 		System.out.println(ownerRepo.findAll());

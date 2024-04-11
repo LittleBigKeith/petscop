@@ -2,6 +2,7 @@ package com.fdmgroup.petscop.serviceTest;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -33,7 +34,7 @@ public class OwnerServiceTest {
     
     @BeforeEach
     void init () {
-    	ownerService = new OwnerService(ownerRepoMock);
+    	ownerService = new OwnerService(ownerRepoMock, null);
     	assertNotNull(ownerRepoMock);
     	assertNotNull(ownerMock);
     }
@@ -62,8 +63,25 @@ public class OwnerServiceTest {
     
     @Test
     void TestIf_OwnerServiceCanCreate() {
+    	doReturn("12345678").when(ownerMock).getPassword();
     	ownerService.create(ownerMock);
     	verify(ownerRepoMock, times(1)).save(ownerMock);
+    }
+    
+    @Test
+    void TestIf_OwnerServiceCanFindByRole() {
+    	int numberOfOwners = 42;
+    	List<Owner> ownerList = new ArrayList<>();
+    	for (int i = 0; i < numberOfOwners; i++) {
+    		ownerList.add(ownerMock);
+    	}
+    	Owner.Role role = Owner.Role.Admin;
+    	doReturn("12345678").when(ownerMock).getPassword();
+    	ownerService.create(ownerMock);
+    	when(ownerRepoMock.findByRole(role)).thenReturn(ownerList);
+    	List<Owner> retrievedOwners = ownerService.findByRole(role);
+    	verify(ownerRepoMock, times(1)).findByRole(role);
+    	assertEquals(retrievedOwners, ownerList);
     }
     
     @Test
@@ -80,11 +98,12 @@ public class OwnerServiceTest {
     }
     
     @Test
-    void TestIf_OwnerServiceCanFindByUserName() {
+    void TestIf_OwnerServiceCanFindByUserNameAndPassword() {
     	String userName = "User name";
-    	when(ownerRepoMock.findByUsername(userName)).thenReturn(Optional.of(ownerMock));
+    	String password = "Password";
+    	when(ownerRepoMock.findByUsernameAndPassword(userName, password)).thenReturn(Optional.of(ownerMock));
     	Owner retrievedOwner = ownerService.findByUsername(userName);
-    	verify(ownerRepoMock, times(1)).findByUsername(userName);
+    	verify(ownerRepoMock, times(1)).findByUsernameAndPassword(userName, password);
     	assertEquals(retrievedOwner, ownerMock);
     }
     

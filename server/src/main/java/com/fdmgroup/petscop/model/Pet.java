@@ -13,34 +13,34 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "PET")
 public class Pet {
-	public enum Gender {
-		M, F
-	}
-
 	@Id
 	@GeneratedValue
 	@Column(name = "PET_ID", nullable = false)
 	private int id;
 	@Column(name = "DEFAULT_NAME", nullable = false, unique = true)
 	private String defaultName;
-	@Enumerated(EnumType.STRING)
-	@Column(name = "GENDER", nullable = false)
-	private Gender gender;
 	@Column(name = "PRICE", nullable = false)
 	private int price;
 
 	@Column(name = "MAX_HUNGER_POINT", nullable = false)
 	private int maxHungerPoint;
 
-	public Pet(String defaultName, Gender gender, int price, int maxHungerPoint) {
+	public Pet(String defaultName, int price, int maxHungerPoint) {
 		this.defaultName = defaultName;
-		this.gender = gender;
 		this.price = price;
 		this.maxHungerPoint = maxHungerPoint;
 	}
 	
 	public Pet() {
 		
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 	public String getDefaultName() {
@@ -49,14 +49,6 @@ public class Pet {
 
 	public void setDefaultName(String defaultName) {
 		this.defaultName = defaultName;
-	}
-
-	public Gender getGender() {
-		return gender;
-	}
-
-	public void setGender(Gender gender) {
-		this.gender = gender;
 	}
 	
 	public int getPrice() {
@@ -77,7 +69,7 @@ public class Pet {
 	
 	@Override
 	public int hashCode() {
-		return Objects.hash(defaultName, gender, id, maxHungerPoint, price);
+		return Objects.hash(defaultName, id, maxHungerPoint, price);
 	}
 
 	@Override
@@ -89,13 +81,13 @@ public class Pet {
 		if (getClass() != obj.getClass())
 			return false;
 		Pet other = (Pet) obj;
-		return Objects.equals(defaultName, other.defaultName) && gender == other.gender && id == other.id
+		return Objects.equals(defaultName, other.defaultName) && id == other.id
 				&& maxHungerPoint == other.maxHungerPoint && price == other.price;
 	}
 
 	@Override
 	public String toString() {
-		return "Pet [id=" + id + ", defaultName=" + defaultName + ", gender=" + gender + ", price=" + price
+		return "Pet [id=" + id + ", defaultName=" + defaultName + ", price=" + price
 				+ ", maxHungerPoint=" + maxHungerPoint + "]";
 	}
 	

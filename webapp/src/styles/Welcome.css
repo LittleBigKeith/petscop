@@ -5,7 +5,7 @@
 
 }
 
-.title {
+.welcome .title {
     font-size: 6vh;
     font-family: 'Arial Black';
     font-weight: 900;
@@ -13,22 +13,26 @@
     text-shadow: 2px 2px #777acd;
 }
 
-.title:hover {
-    color: #5533ff;
+.welcome .title:hover {
+    color: #4428d1;
     text-shadow: 2px 2px #171a5f;
   }
 
-.subtitle {
+.welcome .subtitle {
     font-size: 4vh;
     color: #171a5f;
     padding: 2vh;
+    white-space: nowrap;
 }
 
-.subtitle:hover {
-    color: #5533ff;
+.welcome .subtitle:hover {
+    color: #4428d1;
     text-shadow: 2px 2px #171a5f;
 }
 
-.welcomeImage {
-    height: 36vh;
+.welcome .welcomeImage {
+    height: 28vw;
+    max-height: 28vh;
 }
+
+

@@ -2,6 +2,7 @@ package com.fdmgroup.petscop.model;
 
 import java.time.LocalDate;
 import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -22,16 +23,17 @@ public class OwnerPet {
 	@Column(name = "OWNER_PET_ID", nullable = false)
 	private int id;
 	@ManyToOne(cascade = CascadeType.MERGE)
-	@JoinColumn(name = "OWNER_ID")
+	@JoinColumn(name = "USERNAME", referencedColumnName="USERNAME")
 	private Owner owner;
 	@ManyToOne(cascade = CascadeType.MERGE)
-	@JoinColumn(name = "PET_ID")
+	@JoinColumn(name = "DEFAULT_NAME", referencedColumnName="DEFAULT_NAME")
 	private Pet pet;
 
 	// additional fields
 	@Column(name = "GIVEN_NAME")
 	private String givenName;
 	@Temporal(TemporalType.DATE)
+	@JsonFormat(pattern="yyyy-MM-dd", shape=JsonFormat.Shape.STRING)
 	@Column(name = "BIRTH_DATE", nullable = false)
 	private LocalDate birthDate;
 	@Column(name = "HUNGER_POINT", nullable = false)

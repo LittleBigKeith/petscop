@@ -1,0 +1,15 @@
+.shop .subtitle {
+    margin-bottom: 10px;
+}
+
+.nickname-dialog {
+    padding: 30px;
+    min-width: 400px;
+}
+
+.nickname-form {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    padding:20px;
+}

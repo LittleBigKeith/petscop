@@ -12,7 +12,6 @@ import com.fdmgroup.petscop.model.Pet;
 public interface PetRepository extends JpaRepository<Pet, Integer>{
 	Optional<Pet> findByDefaultName(String defaultName);
 	List<Pet> findByDefaultNameLikeIgnoreCase(String searchTerm);
-	List<Pet> findByGender(Pet.Gender gender);
 	List<Pet> findByPriceLessThanEqualOrderByPriceAsc(int price);
 	List<Pet> findByPriceGreaterThanOrderByPriceAsc(int price);
 }

@@ -60,9 +60,9 @@ public class OwnerPetControllerTest {
     	for (int i = 0; i < numberOfOwnerPets; i++) {
     		ownerPetList.add(ownerPetMock);
     	}
-    	when(ownerPetServiceMock.findByOwnerId(owner.getId())).thenReturn(ownerPetList);
-    	List<OwnerPet> retrievedOwnerPetList = ownerPetController.findByOwner(owner.getId());
-    	verify(ownerPetServiceMock, times(1)).findByOwnerId(owner.getId());
+    	when(ownerPetServiceMock.findByOwnerUsername(owner.getUsername())).thenReturn(ownerPetList);
+    	List<OwnerPet> retrievedOwnerPetList = ownerPetController.findByOwner(owner.getUsername());
+    	verify(ownerPetServiceMock, times(1)).findByOwnerUsername(owner.getUsername());
     	assertEquals(retrievedOwnerPetList, ownerPetList);
     }
     	
@@ -80,15 +80,9 @@ public class OwnerPetControllerTest {
     }
     
     @Test
-    void TestIf_OwnerPetControllerCanCreate() {
-    	ownerPetController.create(ownerPetMock);
-    	verify(ownerPetServiceMock, times(1)).create(ownerPetMock);
-    }
-    
-    @Test
-    void TestIf_OwnerPetControllerCanUpdate() {
-    	ownerPetController.update(ownerPetMock);
-    	verify(ownerPetServiceMock, times(1)).update(ownerPetMock);
+    void TestIf_OwnerPetControllerCanCreateOrUpdate() {
+    	ownerPetController.createOrUpdate(ownerPetMock);
+    	verify(ownerPetServiceMock, times(1)).createOrUpdate(ownerPetMock);
     }
     
     @Test

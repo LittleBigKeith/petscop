@@ -62,13 +62,7 @@ public class FoodServiceTest {
     
     @Test
     void TestIf_FoodServiceCanCreate() {
-    	foodService.create(foodMock);
-    	verify(foodRepoMock, times(1)).save(foodMock);
-    }
-    
-    @Test
-    void TestIf_FoodServiceCanUpdate() {
-    	foodService.update(foodMock);
+    	foodService.createOrUpdate(foodMock);
     	verify(foodRepoMock, times(1)).save(foodMock);
     }
     

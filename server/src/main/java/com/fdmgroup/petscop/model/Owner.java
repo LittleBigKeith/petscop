@@ -3,6 +3,8 @@ package com.fdmgroup.petscop.model;
 import java.time.LocalDate;
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -14,6 +16,9 @@ import jakarta.persistence.TemporalType;
 @Entity
 @Table(name = "OWNER")
 public class Owner {
+	public enum Role {
+		User, Admin
+	}
 	@Id
 	@GeneratedValue
 	@Column(name = "OWNER_ID", nullable = false)
@@ -22,7 +27,10 @@ public class Owner {
 	private String username;
 	@Column(name = "PASSWORD", nullable = false)
 	private String password;
+	@Column(name = "ROLE", nullable = false)
+	private Owner.Role role;
 	@Temporal(TemporalType.DATE)
+	@JsonFormat(pattern="yyyy-MM-dd", shape=JsonFormat.Shape.STRING)
 	@Column(name = "CAKE_DATE", nullable = false)
 	private LocalDate cakeDate;
 	@Column(name = "GOLD", nullable = false)
@@ -30,10 +38,11 @@ public class Owner {
 	@Column(name = "EXPERIENCE", nullable = false)
 	private int experience;
 
-	public Owner(String username, String password, LocalDate cakeDate, int gold, int experience) {
+	public Owner(String username, String password, Owner.Role role, LocalDate cakeDate, int gold, int experience) {
 		this.username = username;
 		this.password = password;
 		this.cakeDate = cakeDate;
+		this.role = role;
 		this.gold = gold;
 		this.experience = experience;
 	}
@@ -65,7 +74,15 @@ public class Owner {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
+	
+	public Owner.Role getRole() {
+		return role;
+	}
+	
+	public void setRole(Owner.Role role) {
+		this.role = role;
+	}
+		
 	public LocalDate getCakeDate() {
 		return cakeDate;
 	}
@@ -111,7 +128,7 @@ public class Owner {
 
 	@Override
 	public String toString() {
-		return "Owner [id=" + id + ", username=" + username + ", password=" + password + ", cakeDate=" + cakeDate
+		return "Owner [id=" + id + ", username=" + username + ", password=" + password + ", role=" + role + ", cakeDate=" + cakeDate
 				+ ", gold=" + gold + ", experience=" + experience + "]";
 	}
 	

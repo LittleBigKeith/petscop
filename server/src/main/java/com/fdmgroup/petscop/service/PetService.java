@@ -28,11 +28,7 @@ public class PetService {
 		return petRepo.findAll();
 	}
 	
-	public void create(Pet pet) {
-		petRepo.save(pet);
-	}
-	
-	public void update(@RequestBody Pet pet) {
+	public void createOrUpdate(Pet pet) {
 		petRepo.save(pet);
 	}
 	
@@ -47,10 +43,6 @@ public class PetService {
 	public List<Pet> searchByDefaultName(String searchString) {
 		String searchTerm = "%" + searchString + "%";
 		return petRepo.findByDefaultNameLikeIgnoreCase(searchTerm);
-	}
-	
-	public List<Pet> findByGender(Pet.Gender gender) {
-		return petRepo.findByGender(gender);
 	}
 	
 	public List<Pet> findAffordable(int Gold) {

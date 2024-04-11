@@ -92,5 +92,7 @@ public class OwnerFoodDataLoader implements ApplicationRunner {
 		System.out.println(ownerFoodRepo.findByOwnerFoodEmbeddedKeyOwner(hiccup));
 		ownerFoodRepo.deleteByOwnerFoodEmbeddedKey(new OwnerFoodEmbeddedKey(astrid, berries));
 		System.out.println(ownerFoodRepo.findAll());
+		
 	}
+
 }

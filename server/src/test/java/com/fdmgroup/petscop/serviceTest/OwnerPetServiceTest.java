@@ -63,8 +63,8 @@ public class OwnerPetServiceTest {
     		ownerPetList.add(ownerPetMock);
     	}
     	when(ownerPetRepoMock.findByOwner(owner)).thenReturn(ownerPetList);
-    	doReturn(Optional.of(owner)).when(ownerRepoMock).findById(owner.getId());
-    	List<OwnerPet> retrievedOwnerPetList = ownerPetService.findByOwnerId(owner.getId());
+    	doReturn(Optional.of(owner)).when(ownerRepoMock).findByUsername(owner.getUsername());
+    	List<OwnerPet> retrievedOwnerPetList = ownerPetService.findByOwnerUsername(owner.getUsername());
     	verify(ownerPetRepoMock, times(1)).findByOwner(owner);
     	assertEquals(retrievedOwnerPetList, ownerPetList);
     }
@@ -84,13 +84,7 @@ public class OwnerPetServiceTest {
     
     @Test
     void TestIf_OwnerPetServiceCanCreate() {
-    	ownerPetService.create(ownerPetMock);
-    	verify(ownerPetRepoMock, times(1)).save(ownerPetMock);
-    }
-    
-    @Test
-    void TestIf_OwnerPetServiceCanUpdate() {
-    	ownerPetService.update(ownerPetMock);
+    	ownerPetService.createOrUpdate(ownerPetMock);
     	verify(ownerPetRepoMock, times(1)).save(ownerPetMock);
     }
     

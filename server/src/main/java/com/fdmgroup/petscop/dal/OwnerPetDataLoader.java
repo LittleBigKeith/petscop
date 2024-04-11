@@ -33,7 +33,7 @@ public class OwnerPetDataLoader implements ApplicationRunner {
 
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
-
+		
 		Owner tuffnet = ownerRepo.findByUsername("Tuffnet").get();
 		Owner ruffnet = ownerRepo.findByUsername("Ruffnet").get();
 		Owner stoick = ownerRepo.findByUsername("Stoick").get();

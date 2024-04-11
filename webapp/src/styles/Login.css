@@ -1,0 +1,22 @@
+.filled-basic {
+    background-color: #FFFFFFCC;
+}
+
+.box-form {
+    margin-bottom: 10px;
+}
+
+.alert {
+    margin: auto;
+    white-space: nowrap;
+    align-content: center;
+    justify-content: center;
+    max-width: 500px;
+    min-width: 200px;
+}
+
+.message {
+    padding: 10px;
+    border-style: solid;
+    background-color: #FFFFFFCC;
+}

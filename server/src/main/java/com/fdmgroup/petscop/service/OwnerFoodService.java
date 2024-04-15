@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import com.fdmgroup.petscop.dal.FoodRepository;
 import com.fdmgroup.petscop.dal.OwnerFoodRepository;
@@ -27,8 +26,8 @@ public class OwnerFoodService {
 		this.foodRepo = foodRepo;
 	}
 	
-	public OwnerFood findByKey(int ownerId, int foodId) {
-		OwnerFoodEmbeddedKey ownerFoodEmbeddedKey = new OwnerFoodEmbeddedKey(ownerRepo.findById(ownerId).get(), foodRepo.findById(foodId).get());
+	public OwnerFood findByKey(String username, String foodname) {
+		OwnerFoodEmbeddedKey ownerFoodEmbeddedKey = new OwnerFoodEmbeddedKey(ownerRepo.findByUsername(username).get(), foodRepo.findByName(foodname).get());
 		return ownerFoodRepo.findByOwnerFoodEmbeddedKey(ownerFoodEmbeddedKey).get();
 	}
 	
@@ -41,7 +40,12 @@ public class OwnerFoodService {
 	}
 	
 	public void createOrUpdate(OwnerFood ownerFood) {
-		ownerFoodRepo.save(ownerFood);
+		if (ownerFood.getQuantity() <= 0) {
+			System.out.println(ownerFood.getQuantity());
+			ownerFoodRepo.deleteByOwnerFoodEmbeddedKey(ownerFood.getId());
+		} else {
+			ownerFoodRepo.save(ownerFood);
+		}
 	}
 	
 	public void deleteByKey(int ownerId, int foodId) {

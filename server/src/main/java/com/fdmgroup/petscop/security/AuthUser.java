@@ -21,45 +21,37 @@ public class AuthUser implements org.springframework.security.core.userdetails.U
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		// TODO Auto-generated method stub
 		System.out.println(new SimpleGrantedAuthority(this.owner.getRole().toString()));
 		return Arrays.asList(new SimpleGrantedAuthority(this.owner.getRole().toString()));
 	}
 
 	@Override
 	public String getPassword() {
-		// TODO Auto-generated method stub
 		return this.owner.getPassword();
 	}
 
 	@Override
 	public String getUsername() {
-		// TODO Auto-generated method stub
-//		return this.user.getUsername();
 		return this.owner.getUsername();		// change to name getter
 	}
 
 	@Override
 	public boolean isAccountNonExpired() {
-		// TODO Auto-generated method stub
 		return true;
 	}
 
 	@Override
 	public boolean isAccountNonLocked() {
-		// TODO Auto-generated method stub
 		return true;
 	}
 
 	@Override
 	public boolean isCredentialsNonExpired() {
-		// TODO Auto-generated method stub
 		return true;
 	}
 
 	@Override
 	public boolean isEnabled() {
-		// TODO Auto-generated method stub
 		return true;
 	}
 	

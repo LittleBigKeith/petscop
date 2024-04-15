@@ -58,9 +58,9 @@ public class OwnerFoodServiceTest {
         Food food = new Food(); 
         OwnerFoodEmbeddedKey ownerFoodEmbeddedKey = new OwnerFoodEmbeddedKey(owner, food);
         when(ownerFoodRepoMock.findByOwnerFoodEmbeddedKey(ownerFoodEmbeddedKey)).thenReturn(Optional.of(ownerFoodMock));
-        doReturn(Optional.of(owner)).when(ownerRepoMock).findById(owner.getId());
-        doReturn(Optional.of(food)).when(foodRepoMock).findById(food.getId());
-        OwnerFood retrievedOwnerFood = ownerFoodService.findByKey(owner.getId(), food.getId());
+        doReturn(Optional.of(owner)).when(ownerRepoMock).findByUsername(owner.getUsername());
+        doReturn(Optional.of(food)).when(foodRepoMock).findByName(food.getName());
+        OwnerFood retrievedOwnerFood = ownerFoodService.findByKey(owner.getUsername(), food.getName());
     	verify(ownerFoodRepoMock, times(1)).findByOwnerFoodEmbeddedKey(ownerFoodEmbeddedKey);
     	assertEquals(retrievedOwnerFood, ownerFoodMock);
     }

@@ -136,16 +136,4 @@ public class OwnerControllerTest {
     	ownerController.sortByGoldHighToLow();
     	verify(ownerServiceMock, times(1)).sortByGoldHighToLow();
     }
-    
-    @Test
-    void testIf_OwnerServiceCanSortByExperienceLowToHigh() {
-    	ownerController.sortByExperienceLowToHigh();
-    	verify(ownerServiceMock, times(1)).sortByExperienceLowToHigh();
-    }
-    
-    @Test
-    void testIf_OwnerServiceCanSortByExperienceHighToLow() {
-    	ownerController.sortByExperienceHighToLow();
-    	verify(ownerServiceMock, times(1)).sortByExperienceHighToLow();
-    }
 }

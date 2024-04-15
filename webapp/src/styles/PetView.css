@@ -14,7 +14,7 @@
 }
 
 .pet-view .left{
-    width: 35%; 
+    width: 24vw; 
     margin: 20px auto;
     height:500px;
     padding-right: 15px;
@@ -29,11 +29,14 @@
 }
 
 .pet-view .left .box {
-    background-color:#333;
+    width: 20vw;
+    max-height: 34vh;
+    background-color: #EEEEEEBB;
     margin:20px;
+    padding: 20px;
     min-width: 180px;
     border-radius:10px;
-    color:#fff;
+    color:#000;
     display:flex;
     align-items:center;
     justify-content:center;

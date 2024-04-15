@@ -20,7 +20,5 @@ import com.fdmgroup.petscop.model.Owner;
 	 List<Owner> findAllByOrderByCakeDateDesc();
 	 List<Owner> findAllByOrderByGoldAsc();
 	 List<Owner> findAllByOrderByGoldDesc();
-	 List<Owner> findAllByOrderByExperienceAsc();
-	 List<Owner> findAllByOrderByExperienceDesc();
 }
 

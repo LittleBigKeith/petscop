@@ -35,16 +35,13 @@ public class Owner {
 	private LocalDate cakeDate;
 	@Column(name = "GOLD", nullable = false)
 	private int gold;
-	@Column(name = "EXPERIENCE", nullable = false)
-	private int experience;
 
-	public Owner(String username, String password, Owner.Role role, LocalDate cakeDate, int gold, int experience) {
+	public Owner(String username, String password, Owner.Role role, LocalDate cakeDate, int gold) {
 		this.username = username;
 		this.password = password;
 		this.cakeDate = cakeDate;
 		this.role = role;
 		this.gold = gold;
-		this.experience = experience;
 	}
 	
 	public Owner() {
@@ -99,17 +96,9 @@ public class Owner {
 		this.gold = gold;
 	}
 
-	public int getExperience() {
-		return experience;
-	}
-
-	public void setExperience(int experience) {
-		this.experience = experience;
-	}
-	
 	@Override
 	public int hashCode() {
-		return Objects.hash(cakeDate, experience, id, gold, password, username);
+		return Objects.hash(cakeDate, id, gold, password, username);
 	}
 
 	@Override
@@ -121,7 +110,7 @@ public class Owner {
 		if (getClass() != obj.getClass())
 			return false;
 		Owner other = (Owner) obj;
-		return Objects.equals(cakeDate, other.cakeDate) && experience == other.experience && id == other.id
+		return Objects.equals(cakeDate, other.cakeDate) && id == other.id
 				&& gold == other.gold && Objects.equals(password, other.password)
 				&& Objects.equals(username, other.username);
 	}
@@ -129,7 +118,7 @@ public class Owner {
 	@Override
 	public String toString() {
 		return "Owner [id=" + id + ", username=" + username + ", password=" + password + ", role=" + role + ", cakeDate=" + cakeDate
-				+ ", gold=" + gold + ", experience=" + experience + "]";
+				+ ", gold=" + gold + "]";
 	}
 	
 	

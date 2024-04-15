@@ -28,6 +28,8 @@ public class PetDataLoader implements ApplicationRunner {
 		
 		ArrayList<Pet> pets = new ArrayList<>();
 		
+		Pet ash = new Pet("Ash", 1, 40);
+		pets.add(ash);
 		Pet toothless = new Pet("Toothless", 100, 200);
 		pets.add(toothless);
 		Pet cloudJumper = new Pet("Cloud Jumper", 200, 280);

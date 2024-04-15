@@ -157,15 +157,4 @@ public class OwnerServiceTest {
     	verify(ownerRepoMock, times(1)).findAllByOrderByGoldDesc();
     }
     
-    @Test
-    void testIf_OwnerServiceCanSortByExperienceLowToHigh() {
-    	ownerService.sortByExperienceLowToHigh();
-    	verify(ownerRepoMock, times(1)).findAllByOrderByExperienceAsc();
-    }
-    
-    @Test
-    void testIf_OwnerServiceCanSortByExperienceHighToLow() {
-    	ownerService.sortByExperienceHighToLow();
-    	verify(ownerRepoMock, times(1)).findAllByOrderByExperienceDesc();
-    }
 }

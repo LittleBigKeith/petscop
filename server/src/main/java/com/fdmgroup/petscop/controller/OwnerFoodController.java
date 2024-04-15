@@ -28,9 +28,9 @@ public class OwnerFoodController {
 		this.ownerFoodService = ownerFoodService;
 	}
 	
-	@GetMapping("find/key/{ownerId}/{foodId}")
-	public OwnerFood findByKey(@PathVariable int ownerId, @PathVariable int foodId) {
-		return ownerFoodService.findByKey(ownerId, foodId);
+	@GetMapping("find/key/{username}/{foodname}")
+	public OwnerFood findByKey(@PathVariable String username, @PathVariable String foodname) {
+		return ownerFoodService.findByKey(username, foodname);
 	}
 	
 	@GetMapping("find/owner/{username}")

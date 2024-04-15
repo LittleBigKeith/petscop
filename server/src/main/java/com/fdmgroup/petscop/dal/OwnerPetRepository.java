@@ -12,8 +12,7 @@ import com.fdmgroup.petscop.model.Pet;
 @Repository
 public interface OwnerPetRepository extends JpaRepository<OwnerPet, Integer>{
 	List<OwnerPet> findByOwner(Owner owner);
-	List<OwnerPet> findByPet(Pet pet);
-	
+	List<OwnerPet> findByPet(Pet pet);	
 	OwnerPet findByGivenName(String givenName);
 	List<OwnerPet> findByGivenNameLikeIgnoreCase(String searchTerm);
 }

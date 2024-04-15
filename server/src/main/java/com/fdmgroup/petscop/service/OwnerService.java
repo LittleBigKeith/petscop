@@ -48,6 +48,9 @@ public class OwnerService {
 	}
 	
 	public void update(@RequestBody Owner owner) {
+		if (owner.getGold() < 0) {
+			throw new UnprocessableEntityException("Invalid operation");
+		}
 		ownerRepo.save(owner);
 	}
 	
@@ -94,13 +97,5 @@ public class OwnerService {
 	
 	public List<Owner> sortByGoldHighToLow() {
 		return ownerRepo.findAllByOrderByGoldDesc();
-	}
-	
-	public List<Owner> sortByExperienceLowToHigh() {
-		return ownerRepo.findAllByOrderByExperienceAsc();
-	}
-	
-	public List<Owner> sortByExperienceHighToLow() {
-		return ownerRepo.findAllByOrderByExperienceDesc();
 	}
 }

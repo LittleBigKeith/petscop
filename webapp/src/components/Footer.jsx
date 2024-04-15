@@ -15,12 +15,12 @@ const Footer = () => {
                 </li>
                 <li>
                     <a href="mailto:keithkong1996@gmail.com">
-                        <img src={Email} className="email"/>
+                        <img src={Email} className="email" />
                     </a>
                 </li>
                 <li>
                     <a href="https://github.com/LittleBigKeith">
-                        <img src={Github} className="github"/>
+                        <img src={Github} className="github" />
                     </a>
                 </li>
             </ul>

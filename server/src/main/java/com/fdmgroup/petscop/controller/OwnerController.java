@@ -98,14 +98,5 @@ public class OwnerController {
 		return ownerService.sortByGoldHighToLow();
 	}
 	
-	@GetMapping("sort/exp/asc")
-	public List<Owner> sortByExperienceLowToHigh() {
-		return ownerService.sortByExperienceLowToHigh();
-	}
-	
-	@GetMapping("sort/exp/desc")
-	public List<Owner> sortByExperienceHighToLow() {
-		return ownerService.sortByExperienceHighToLow();
-	}
 }
 

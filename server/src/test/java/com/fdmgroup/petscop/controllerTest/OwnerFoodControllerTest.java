@@ -41,11 +41,11 @@ public class OwnerFoodControllerTest {
    
     @Test
     void TestIf_OwnerFoodControllerCanFindByKey() {
-    	int ownerId = 42;
-    	int foodId = 24;
-        when(ownerFoodServiceMock.findByKey(ownerId, foodId)).thenReturn(ownerFoodMock);
-        OwnerFood retrievedOwnerFood = ownerFoodController.findByKey(ownerId, foodId);
-    	verify(ownerFoodServiceMock, times(1)).findByKey(ownerId, foodId);
+    	String ownerName = "Owner";
+    	String foodName = "Food";
+        when(ownerFoodServiceMock.findByKey(ownerName, foodName)).thenReturn(ownerFoodMock);
+        OwnerFood retrievedOwnerFood = ownerFoodController.findByKey(ownerName, foodName);
+    	verify(ownerFoodServiceMock, times(1)).findByKey(ownerName, foodName);
     	assertEquals(retrievedOwnerFood, ownerFoodMock);
     }
     

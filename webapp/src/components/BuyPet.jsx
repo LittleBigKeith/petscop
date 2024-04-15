@@ -20,6 +20,7 @@ import Dialog from '@mui/material/Dialog';
 import Snackbar from '@mui/material/Snackbar';
 import moment from 'moment';
 
+// --- table boilerplate ---
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
         backgroundColor: theme.palette.common.black,
@@ -42,6 +43,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
     },
 }));
 
+// change column data and display title here
 const columns = [
     { id: 'defaultName', label: 'Type', minWidth: 100 },
     {
@@ -59,17 +61,18 @@ const columns = [
         format: (value) => value.toLocaleString('en-US'),
     },
 ];
+// --- table boilerplate ---
 
 const createPet = (props) => {
     const { bearer, onClose, openDialog, username, defaultName, nickname, setNickname, maxHungerPoint, setGold } = props;
 
     console.log(username + " created " + defaultName, nickname + " with max hunger " + maxHungerPoint)
-    
+
     const requestOptions = {
         headers: {
             "Authorization": bearer
         }
-    } 
+    }
 
     const requestBody = {
         givenName: nickname,
@@ -83,43 +86,36 @@ const createPet = (props) => {
     const endpointPostOwnerPet = BASE_URL + "ownerpet/update"
 
     axios.get(endpointGetOwner, requestOptions)
-         .then(response => {
+        .then(response => {
             requestBody.owner = response.data
-            console.log(response.data)
-
             axios.get(endPointGetPet, requestOptions)
-            .then(response =>  {
-                requestBody.pet = response.data
-                console.log(response.data)
-                
-                // update Owner Table (-$)
-                requestBody.owner.gold -= response.data.price
-                setGold(requestBody.owner.gold)
-                axios.post(endPointPostOwner, requestBody.owner, requestOptions)
                 .then(response => {
-                        console.log("Update owner success!")
-                }).catch(error => {
-                    // Can target specific HTTP error codes and display appropriate messages
-                        console.log(error.response.data.message)
-                })
-                // update OwnerPet Table
-                axios.post(endpointPostOwnerPet, requestBody, requestOptions)
-                // Upon Success
-                .then(response => {
-                        console.log("Create Pet Success!")
-                })
-                // Upon failure
-                .catch(error => {
-                // Can target specific HTTP error codes and display appropriate messages
-                    console.log(error.response.data.message)
-                }
-           )
-           .catch(error => {
-                // Can target specific HTTP error codes and display appropriate messages
-                    console.log(error.response.data.message)
+                    requestBody.pet = response.data
+                    // update Owner Table (-$)
+                    requestBody.owner.gold -= response.data.price
+                    setGold(requestBody.owner.gold)
+                    axios.post(endPointPostOwner, requestBody.owner, requestOptions)
+                        .then(response => {
+                            console.log("Update owner success!")
+                        }).catch(error => {
+                            console.log(error.response.data.message)
+                        })
+                    // update OwnerPet Table
+                    axios.post(endpointPostOwnerPet, requestBody, requestOptions)
+                        // Upon Success
+                        .then(response => {
+                            console.log("Create Pet Success!")
+                        })
+                        // Upon failure
+                        .catch(error => {
+                            console.log(error.response.data.message)
+                        }
+                        )
+                        .catch(error => {
+                            console.log(error.response.data.message)
+                        })
                 })
         })
-    })
 }
 
 function SimpleDialog(props) {
@@ -131,14 +127,14 @@ function SimpleDialog(props) {
 
     return (
         <Dialog className="nickname-dialog" onClose={handleCloseDialog} open={openDialog} disableRestoreFocus
-        sx={{
-            '.MuiPaper-root': {
-              padding: 2,
-            },
-          }}>
+            sx={{
+                '.MuiPaper-root': {
+                    padding: 2,
+                },
+            }}>
             <DialogTitle>You've chosen: {defaultName}</DialogTitle>
             <DialogTitle>Give it a name!</DialogTitle>
-            <form className="nickname-form" onSubmit={(e) => {e.preventDefault(); createPet(props); onClose(); setOpenSnackbar(true)}}>
+            <form className="nickname-form" onSubmit={(e) => { e.preventDefault(); createPet(props); onClose(); setOpenSnackbar(true) }}>
                 <TextField label="nickname" onChange={e => setNickname(e.target.value)} autoFocus autoComplete="off"></TextField>
                 <br />
                 <Button type="Submit">Confirm</Button>
@@ -200,7 +196,6 @@ const BuyPet = (props) => {
         axios.get(endpoint, requestOptions)
             .then(response => {
                 setPetArray(response.data)
-                console.log(response.data)
             })
             .catch(error => {
                 console.log(error.response.data.message)
@@ -252,27 +247,27 @@ const BuyPet = (props) => {
                                                     </StyledTableCell>
                                                 );
                                             })}
-                                            {gold >= row["price"]?
-                                            <StyledTableCell key="buy" align="center" 
-                                            >
-                                                <Button variant="outlined" style={{
-                                                    color: "#000000",
-                                                    borderColor: "#000000",
-                                                    width: 100
-                                                }} onClick={() => handleClickOpenDialog(row["defaultName"], row["maxHungerPoint"])}>
-                                                    Buy
-                                                </Button>
-                                            </StyledTableCell>: 
-                                            <StyledTableCell key="no buy" align="center" >
-                                                <Button variant="outlined" style={{
-                                                    color: "#FF0000",
-                                                    borderColor: "#FF0000",
-                                                    width: 100
-                                                }} onClick={() => handleClickOpenDialog(row["defaultName"], row["maxHungerPoint"])}
-                                                disabled>
-                                                    -${(row["price"] - gold).toLocaleString('en-US')}
-                                                </Button>
-                                            </StyledTableCell>}
+                                            {gold >= row["price"] ?
+                                                <StyledTableCell key="buy" align="center"
+                                                >
+                                                    <Button variant="outlined" style={{
+                                                        color: "#000000",
+                                                        borderColor: "#000000",
+                                                        width: 100
+                                                    }} onClick={() => handleClickOpenDialog(row["defaultName"], row["maxHungerPoint"])}>
+                                                        Buy
+                                                    </Button>
+                                                </StyledTableCell> :
+                                                <StyledTableCell key="no buy" align="center" >
+                                                    <Button variant="outlined" style={{
+                                                        color: "#FF0000",
+                                                        borderColor: "#FF0000",
+                                                        width: 100
+                                                    }} onClick={() => handleClickOpenDialog(row["defaultName"], row["maxHungerPoint"])}
+                                                        disabled>
+                                                        -${(row["price"] - gold).toLocaleString('en-US')}
+                                                    </Button>
+                                                </StyledTableCell>}
                                         </StyledTableRow>
                                     );
                                 })}
@@ -294,12 +289,12 @@ const BuyPet = (props) => {
                 openDialog={openDialog}
                 setOpenSnackbar={setOpenSnackbar}
                 onClose={handleCloseDialog}
-                username = {username}
-                defaultName = {defaultName}
-                nickname = {nickname}
-                setNickname = {setNickname}
-                maxHungerPoint = {maxHungerPoint}
-                setGold = {setGold}
+                username={username}
+                defaultName={defaultName}
+                nickname={nickname}
+                setNickname={setNickname}
+                maxHungerPoint={maxHungerPoint}
+                setGold={setGold}
             />
             <Snackbar
                 open={openSnackbar}

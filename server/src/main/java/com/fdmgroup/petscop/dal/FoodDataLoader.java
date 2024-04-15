@@ -28,17 +28,17 @@ public class FoodDataLoader implements ApplicationRunner{
 		
 		ArrayList<Food> foods = new ArrayList<>();
 		
-		Food peanuts = new Food("Peanuts", 5, 2);
+		Food peanuts = new Food("Peanuts", 50, 20);
 		foods.add(peanuts);
-		Food oatmeal = new Food("Oatmeal", 12, 5);
+		Food oatmeal = new Food("Oatmeal", 120, 50);
 		foods.add(oatmeal);
-		Food apple = new Food("Apple", 25, 12);
+		Food apple = new Food("Apple", 250, 120);
 		foods.add(apple);
-		Food berries = new Food("Berries", 30, 15);
+		Food berries = new Food("Berries", 300, 150);
 		foods.add(berries);
-		Food carrot = new Food("Carrot", 40, 25);
+		Food carrot = new Food("Carrot", 400, 250);
 		foods.add(carrot);
-		Food pumpkin = new Food("Pumpkin", 50, 35);
+		Food pumpkin = new Food("Pumpkin", 500, 350);
 		foods.add(pumpkin);
 		
 		foodRepo.saveAll(foods);
